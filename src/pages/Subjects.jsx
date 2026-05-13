@@ -23,6 +23,15 @@ function Subjects() {
     >
       <h1>📚 Matérias</h1>
 
+      <p
+        style={{
+          color: '#cbd5e1',
+          marginTop: '10px',
+        }}
+      >
+        Adicione suas matérias para o FOCUS organizar seus estudos.
+      </p>
+
       <div
         style={{
           display: 'flex',
@@ -62,8 +71,12 @@ function Subjects() {
           >
             <h2>{item}</h2>
 
-            <p>
-              Matéria adicionada ao cronograma.
+            <p
+              style={{
+                color: '#cbd5e1',
+              }}
+            >
+              Matéria adicionada ao cronograma inteligente.
             </p>
           </div>
         ))}
@@ -81,6 +94,7 @@ const input = {
   outline: 'none',
   flex: 1,
   minWidth: '250px',
+  fontSize: '15px',
 }
 
 const button = {
@@ -90,6 +104,7 @@ const button = {
   background: '#2563eb',
   color: 'white',
   cursor: 'pointer',
+  fontWeight: 'bold',
 }
 
 const card = {
