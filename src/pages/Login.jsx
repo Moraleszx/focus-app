@@ -1,15 +1,39 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 function Login() {
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+
+  function handleLogin() {
+    if (!email || !password) {
+      setError('Preencha todos os campos.')
+      return
+    }
+
+    setError('')
+    navigate('/dashboard')
+  }
+
   return (
     <div
       style={{
         minHeight: '100vh',
-        background: `
-radial-gradient(circle at top left, #7c3aed 0%, transparent 30%),
-radial-gradient(circle at bottom right, #2563eb 0%, transparent 30%),
-linear-gradient(135deg, #020617, #0f172a)
-`,
+
+        backgroundImage: `
+        linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.7)
+        ),
+        url('/background.jpg')
+        `,
+
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -19,9 +43,9 @@ linear-gradient(135deg, #020617, #0f172a)
     >
       <div
         style={{
-        background: 'rgba(0,0,0,0.75)',
-backdropFilter: 'blur(10px)',
-border: '1px solid rgba(255,255,255,0.1)',
+          background: 'rgba(0,0,0,0.75)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.1)',
           padding: '40px',
           borderRadius: '30px',
           width: '100%',
@@ -30,14 +54,13 @@ border: '1px solid rgba(255,255,255,0.1)',
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
-          boxShadow: '0 0 30px rgba(0,0,0,0.5)',
         }}
       >
         <img
           src="/logo.png"
           alt="Logo"
           style={{
-            width: '200px',
+            width: '120px',
             display: 'block',
             margin: '0 auto',
           }}
@@ -47,39 +70,45 @@ border: '1px solid rgba(255,255,255,0.1)',
           style={{
             textAlign: 'center',
             margin: 0,
-            fontSize: '35px',
           }}
         >
-          Seja Bem-vindo(a) de volta.
+          FOCUS
         </h1>
-
-        <p
-          style={{
-            textAlign: 'center',
-            color: '#cbd5e1',
-            marginTop: '-10px',
-          }}
-        >
-          Organize sua mente. Domine seus estudos.
-        </p>
 
         <input
           type="email"
           placeholder="Seu email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={input}
         />
 
         <input
           type="password"
           placeholder="Sua senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           style={input}
         />
 
-        <Link to="/dashboard">
-          <button style={button}>
-            Entrar
-          </button>
-        </Link>
+        {error && (
+          <p
+            style={{
+              color: '#f87171',
+              textAlign: 'center',
+              margin: 0,
+            }}
+          >
+            {error}
+          </p>
+        )}
+
+        <button
+          onClick={handleLogin}
+          style={button}
+        >
+          Entrar
+        </button>
 
         <Link
           to="/register"
@@ -87,7 +116,6 @@ border: '1px solid rgba(255,255,255,0.1)',
             color: '#a78bfa',
             textAlign: 'center',
             textDecoration: 'none',
-            fontWeight: 'bold',
           }}
         >
           Criar conta
@@ -104,7 +132,6 @@ const input = {
   background: '#111111',
   color: 'white',
   outline: 'none',
-  fontSize: '15px',
 }
 
 const button = {
@@ -112,10 +139,10 @@ const button = {
   padding: '16px',
   borderRadius: '15px',
   border: 'none',
-  background: '#7c3aed',
+  background:
+    'linear-gradient(135deg,#7c3aed,#2563eb)',
   color: 'white',
   fontWeight: 'bold',
-  fontSize: '16px',
   cursor: 'pointer',
 }
 
