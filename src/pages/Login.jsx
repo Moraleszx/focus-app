@@ -23,37 +23,43 @@ function Login() {
       style={{
         minHeight: '100vh',
 
-        backgroundImage: `
-        linear-gradient(
-        rgba(0,0,0,0.7),
-        rgba(0,0,0,0.7)
-        ),
-        url('/background.jpg')
+        background: `
+        radial-gradient(circle at top left, rgba(124,58,237,0.4), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(37,99,235,0.4), transparent 25%),
+        linear-gradient(135deg, #020617, #0f172a)
         `,
-
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
 
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         padding: '20px',
         fontFamily: 'Arial',
+        overflow: 'hidden',
       }}
     >
       <div
         style={{
-          background: 'rgba(0,0,0,0.75)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          padding: '40px',
-          borderRadius: '30px',
           width: '100%',
-          maxWidth: '420px',
-          color: 'white',
+          maxWidth: '430px',
+
+          background: 'rgba(15,23,42,0.75)',
+
+          backdropFilter: 'blur(20px)',
+
+          border: '1px solid rgba(255,255,255,0.08)',
+
+          borderRadius: '35px',
+
+          padding: '45px',
+
+          boxShadow:
+            '0 0 50px rgba(124,58,237,0.25)',
+
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
+
+          color: 'white',
         }}
       >
         <img
@@ -61,8 +67,9 @@ function Login() {
           alt="Logo"
           style={{
             width: '120px',
-            display: 'block',
             margin: '0 auto',
+            filter:
+              'drop-shadow(0 0 15px rgba(124,58,237,0.7))',
           }}
         />
 
@@ -70,10 +77,23 @@ function Login() {
           style={{
             textAlign: 'center',
             margin: 0,
+            fontSize: '40px',
+            fontWeight: 'bold',
           }}
         >
           FOCUS
         </h1>
+
+        <p
+          style={{
+            textAlign: 'center',
+            color: '#cbd5e1',
+            marginTop: '-10px',
+            fontSize: '15px',
+          }}
+        >
+          Organize sua rotina e domine seus estudos.
+        </p>
 
         <input
           type="email"
@@ -113,9 +133,10 @@ function Login() {
         <Link
           to="/register"
           style={{
-            color: '#a78bfa',
             textAlign: 'center',
+            color: '#a78bfa',
             textDecoration: 'none',
+            fontWeight: 'bold',
           }}
         >
           Criar conta
@@ -126,24 +147,33 @@ function Login() {
 }
 
 const input = {
-  padding: '16px',
-  borderRadius: '15px',
-  border: '1px solid #4c1d95',
-  background: '#111111',
+  padding: '17px',
+  borderRadius: '18px',
+  border: '1px solid rgba(168,85,247,0.6)',
+  boxShadow: '0 0 15px rgba(124,58,237,0.15)',
+background: 'rgba(15,23,42,0.9)',
   color: 'white',
   outline: 'none',
+  fontSize: '15px',
 }
 
 const button = {
   width: '100%',
-  padding: '16px',
-  borderRadius: '15px',
+  padding: '17px',
+  borderRadius: '18px',
   border: 'none',
+
   background:
     'linear-gradient(135deg,#7c3aed,#2563eb)',
+
   color: 'white',
   fontWeight: 'bold',
+  fontSize: '16px',
+
   cursor: 'pointer',
+
+  boxShadow:
+    '0 0 25px rgba(124,58,237,0.4)',
 }
 
 export default Login
