@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 function Register() {
+
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
@@ -10,12 +11,16 @@ function Register() {
   const [error, setError] = useState('')
 
   function handleRegister() {
+
     if (!name || !email || !password) {
       setError('Preencha todos os campos.')
       return
     }
 
+    localStorage.setItem('username', name)
+
     setError('')
+
     navigate('/dashboard')
   }
 
@@ -33,10 +38,13 @@ function Register() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+
         padding: '20px',
+
         fontFamily: 'Arial',
       }}
     >
+
       <div
         style={{
           width: '100%',
@@ -46,7 +54,8 @@ function Register() {
 
           backdropFilter: 'blur(18px)',
 
-          border: '1px solid rgba(255,255,255,0.08)',
+          border:
+            '1px solid rgba(255,255,255,0.08)',
 
           borderRadius: '35px',
 
@@ -57,14 +66,17 @@ function Register() {
 
           display: 'flex',
           flexDirection: 'column',
+
           gap: '20px',
 
           color: 'white',
         }}
       >
+
         <img
           src="/logo.png"
           alt="Logo"
+
           style={{
             width: '200px',
             margin: '0 auto',
@@ -94,24 +106,39 @@ function Register() {
         <input
           type="text"
           placeholder="Seu nome"
+
           value={name}
-          onChange={(e) => setName(e.target.value)}
+
+          onChange={(e) =>
+            setName(e.target.value)
+          }
+
           style={input}
         />
 
         <input
           type="email"
           placeholder="Seu email"
+
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+
           style={input}
         />
 
         <input
           type="password"
           placeholder="Sua senha"
+
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+
           style={input}
         />
 
@@ -136,21 +163,28 @@ function Register() {
 
         <Link
           to="/"
+
           style={{
             textAlign: 'center',
+
             color: '#a78bfa',
+
             textDecoration: 'none',
+
             fontWeight: 'bold',
           }}
         >
           Voltar para login
         </Link>
+
       </div>
+
     </div>
   )
 }
 
 const input = {
+
   padding: '17px',
 
   borderRadius: '18px',
@@ -171,9 +205,13 @@ const input = {
 }
 
 const button = {
+
   width: '100%',
+
   padding: '17px',
+
   borderRadius: '18px',
+
   border: 'none',
 
   background:

@@ -1,5 +1,5 @@
+import TimerPage from './pages/TimerPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
@@ -13,6 +13,10 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/subjects' element={<Subjects />} />
+        <Route
+  path="/timer"
+  element={<TimerPage />}
+/>
       </Routes>
     </BrowserRouter>
   )

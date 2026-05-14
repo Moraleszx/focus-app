@@ -8,9 +8,6 @@ function Schedule() {
 
   const [schedule, setSchedule] = useState([])
 
-  const [editingIndex, setEditingIndex] =
-    useState(null)
-
   useEffect(() => {
 
     const saved =
@@ -41,43 +38,10 @@ function Schedule() {
       day,
     }
 
-    if (editingIndex !== null) {
-
-      const updated = [...schedule]
-
-      updated[editingIndex] = newItem
-
-      setSchedule(updated)
-
-      setEditingIndex(null)
-
-    } else {
-
-      setSchedule([...schedule, newItem])
-    }
+    setSchedule([...schedule, newItem])
 
     setSubject('')
     setTime('')
-    setDay('Segunda')
-  }
-
-  function removeSubject(index) {
-
-    const updated =
-      schedule.filter((_, i) => i !== index)
-
-    setSchedule(updated)
-  }
-
-  function editSubject(index) {
-
-    const item = schedule[index]
-
-    setSubject(item.subject)
-    setTime(item.time)
-    setDay(item.day)
-
-    setEditingIndex(index)
   }
 
   return (
@@ -171,9 +135,7 @@ function Schedule() {
 
           style={button}
         >
-          {editingIndex !== null
-            ? 'Salvar'
-            : 'Adicionar'}
+          Adicionar
         </button>
 
       </div>
@@ -196,75 +158,31 @@ function Schedule() {
               background:
                 'rgba(255,255,255,0.03)',
 
-              padding: '20px',
+              padding: '18px',
 
-              borderRadius: '20px',
+              borderRadius: '18px',
 
               border:
                 '1px solid rgba(255,255,255,0.05)',
-
-              display: 'flex',
-
-              justifyContent:
-                'space-between',
-
-              alignItems: 'center',
-
-              flexWrap: 'wrap',
-
-              gap: '20px',
             }}
           >
 
-            <div>
-
-              <h3
-                style={{
-                  margin: 0,
-                }}
-              >
-                {item.subject}
-              </h3>
-
-              <p
-                style={{
-                  color: '#cbd5e1',
-                  marginTop: '8px',
-                }}
-              >
-                {item.day} • {item.time}
-              </p>
-
-            </div>
-
-            <div
+            <h3
               style={{
-                display: 'flex',
-                gap: '10px',
+                margin: 0,
               }}
             >
+              {item.subject}
+            </h3>
 
-              <button
-                onClick={() =>
-                  editSubject(index)
-                }
-
-                style={editButton}
-              >
-                Editar
-              </button>
-
-              <button
-                onClick={() =>
-                  removeSubject(index)
-                }
-
-                style={removeButton}
-              >
-                Remover
-              </button>
-
-            </div>
+            <p
+              style={{
+                color: '#cbd5e1',
+                marginTop: '8px',
+              }}
+            >
+              {item.day} • {item.time}
+            </p>
 
           </div>
 
@@ -310,42 +228,6 @@ const button = {
   fontWeight: 'bold',
 
   cursor: 'pointer',
-}
-
-const editButton = {
-
-  padding: '12px 18px',
-
-  borderRadius: '12px',
-
-  border: 'none',
-
-  background:
-    'linear-gradient(135deg,#2563eb,#7c3aed)',
-
-  color: 'white',
-
-  cursor: 'pointer',
-
-  fontWeight: 'bold',
-}
-
-const removeButton = {
-
-  padding: '12px 18px',
-
-  borderRadius: '12px',
-
-  border: 'none',
-
-  background:
-    'linear-gradient(135deg,#dc2626,#ef4444)',
-
-  color: 'white',
-
-  cursor: 'pointer',
-
-  fontWeight: 'bold',
 }
 
 export default Schedule
