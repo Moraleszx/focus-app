@@ -73,7 +73,7 @@ function Dashboard() {
             alt="Logo"
 
             style={{
-              width: '150px',
+             width: 'clamp(90px,20vw,150px)',
             }}
           />
 
@@ -82,7 +82,7 @@ function Dashboard() {
             <h1
               style={{
                 margin: 0,
-                fontSize: '45px',
+              fontSize: 'clamp(28px,5vw,45px)',
               }}
             >
               Olá, {username}
@@ -160,7 +160,7 @@ function Dashboard() {
           alt="Quote"
 
           style={{
-            width: '700px',
+            width: '600px',
 
             borderRadius: '25px',
           }}
